@@ -1,0 +1,49 @@
+{% extends "core/base.html" %}
+{% block title %} New Arrivals{% endblock title %}
+{% load static %}
+
+
+
+
+
+
+{% block content %}
+
+    
+
+
+    <br>
+  <!--card-->
+  
+  <div class="container-fluid d-flex justify-content-center align-items-center">
+    <div class="text-center">
+      <h4 style="font-family: cursive;">New Arrival</h4>
+    </div>
+  </div>
+  <hr class="ms-5 me-5">
+
+  <div class="container">
+    <div class="row g-0 justify-content-start">
+      {% for r in rf  %}
+        <div class="col-md-3 mb-4" style="padding-left: 20px;">
+          <div class="card product-card">
+            <a href="{% url "bigcard" r.id %}">
+              <img src="{{r.upperwear_img.url}}" alt="" class="card-img-top" height="480px">
+            </a>
+            <div class="card-body product-info">
+              <p class="product-title">{{r.short_d}}</p>
+              <p class="product-price">INR &#8377 {{r.discounted_price}}   <s style="color:red;">{{r.original_price}}</s></p>
+            </div>
+            
+            <pre>  S     M     XL     XXL       <i class="bi bi-heart-fill" style="color: red;"></i> </pre>
+            
+          </div>
+        </div>
+        {% endfor %}
+        <div class="text-center">
+          <button class="btn btn-outline-dark w-100" type="submit"> <a href="" style="color: rgb(0, 0, 0); text-decoration: none;">View More</a></button>
+          </div>
+        <br><br><br>
+    </div>
+</div>
+    {% endblock content %}

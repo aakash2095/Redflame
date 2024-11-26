@@ -1,0 +1,55 @@
+{% load static %}
+<style>
+
+    .icon-container {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 150px;
+        margin-right: 150px;
+        gap: 20px; /* Space between icons */
+        flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    }
+    
+    .icon-item {
+        text-align: center;
+        flex: 1; /* Makes items grow evenly */
+        min-width: 120px; /* Ensures icons don't get too small */
+    }
+    
+    .icon-item img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .icon-item h3 {
+        margin-top: 8px;
+        font-size: 14px;
+        color: black;
+    }
+</style>
+
+<div class="icon-container" style="display: flex; justify-content: space-between; margin-left: 150px; margin-right: 150px;">
+    <div class="icon-item" style="text-align: center;">
+        <img src="{% static "core/images/icon1.svg" %}" alt="RED FLAME" id="img10" style="width: 50px; height: 50px;">
+        <h3 style="margin-top: 8px; font-size: 14px; color: black;">Free Shipping</h3>
+    </div>
+    <div class="icon-item" style="text-align: center;">
+        <img src="{% static "core/images/icon2.svg" %}" alt="star icon" id="img10" style="width: 50px; height: 50px;">
+        <h3 style="margin-top: 8px; font-size: 14px; color: black;">Easy Return & Exchange</h3>
+    </div>
+    <div class="icon-item" style="text-align: center;">
+        <img src="{% static "core/images/icon3.svg" %}" alt="check icon" id="img10" style="width: 50px; height: 50px;">
+        <h3 style="margin-top: 8px; font-size: 14px; color: black;">Premium Quality</h3>
+    </div>
+    <div class="icon-item" style="text-align: center;">
+        <img src="{% static "core/images/icon4.svg" %}" alt="lightning icon" id="img10" style="width: 50px; height: 50px;">
+        <h3 style="margin-top: 8px; font-size: 14px; color: black;">COD Available</h3>
+    </div>
+    <div class="icon-item" style="text-align: center;">
+        <img src="{% static "core/images/icon5.svg" %}" alt="gear icon" id="img10" style="width: 50px; height: 50px;">
+        <h3 style="margin-top: 8px; font-size: 14px; color: black;">Safe & Secure Payments</h3>
+    </div>
+</div>
+<br>
+<br>
+<br>

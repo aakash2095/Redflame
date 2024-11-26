@@ -1,0 +1,51 @@
+{% extends "core/base.html" %}
+{% block title %} T-Shirts {% endblock title %}
+{% load static %}
+
+
+
+
+{% block content %}
+<br>
+
+<div class="container-fluid d-flex justify-content-center align-items-center">
+    <div class="text-center">
+      <h4 style="font-family: cursive;">T-Shirts</h4>
+    </div>
+  </div>
+  <hr class="ms-5 me-5">
+
+  <div class="container">
+    <div class="row justify-content-start">
+        <!-- Card 1 -->
+        {% for r in rf  %}
+        <div class="col-md-6 mb-4" style="padding-left: 20px;">
+            <div class="card">
+                 <a href="{% url "bigcard" r.id %}">
+                     <img src="{{r.upperwear_img.url}}" alt="" class="card-img-top" height="890px" id="crd">
+                    </a>
+                    <div class="card-body">
+                        <a href="#" style="text-decoration: none;">
+                            <p style="color: black;" class="lead">{{r.short_d}}</p>
+                        </a>
+                        <p class="product-price">INR &#8377 {{r.discounted_price}}   <s style="color:red;">{{r.original_price}}</s></p>
+                        <a href="#" style="text-decoration: none; color: darkgray;">
+                            <pre>S          M          XL          XXL                                 <i class="bi bi-heart"></i></pre>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="text-center">
+                <button class="btn btn-outline-dark w-100" type="submit"> <a href="" style="color: rgb(0, 0, 0); text-decoration: none;">View More</a></button>
+                </div>
+        </div>
+    </div>
+    
+
+  
+
+<br>
+
+
+{% endblock content %}

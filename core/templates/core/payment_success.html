@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Success</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+
+        body {
+            background-image: url('https://www.westside.com/cdn/shop/files/C2_10_1920X900_SHOP_JOGGERS.jpg?v=1731658928');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+            
+        }
+        /* Simple pop-in animation */
+        .icon-success {
+            font-size: 72px;
+            color: #28a745;
+            animation: popIn 0.5s ease;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container vh-100 d-flex justify-content-center align-items-center">
+    <div class="card shadow-lg p-4" style="max-width: 500px; width: 100%;">
+        <div class="text-center mb-4">
+            <!-- Simple animated check-circle icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" fill="currentColor" class="bi bi-check-circle icon-success" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+                <path d="M10.97 6.03a.75.75 0 1 1 1.06 1.06l-3.99 3.99a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 0 1 1.06-1.06l1.47 1.47 3.47-3.47z"/>
+            </svg>
+        </div>
+        <h4 class="text-center text-success">Payment Successful!</h4>
+        <p class="text-center text-muted">Thank you for your purchase. Your transaction was completed successfully.</p>
+        
+        <div class="card-body">
+            <h5 class="card-title text-center">Transaction Summary</h5>
+            <br>
+            <div class="d-flex justify-content-between">
+                <p>Usename</p>
+                <p class="text-muted">{{request.user}}</p>
+            </div>
+            <div class="d-flex justify-content-between">
+                <p>Transaction ID:</p>
+                <p class="text-muted">TTCNI022000800594</p>
+            </div>
+           
+            <div class="d-flex justify-content-between">
+                <p>Payment Method:</p>
+                <p class="text-muted">Online</p>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="{% url "index" %}" class="btn btn-primary">Go to Homepage</a>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

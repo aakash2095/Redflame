@@ -1,0 +1,94 @@
+{% extends "core/base.html" %}
+{% block title %} Cart {% endblock title %}
+{% load static %}
+
+{% block content %}
+<!-- Order Summary -->
+<div class="container d-flex justify-content-center mb-5">
+    <div class="card shadow p-4" style="width: 100%;">
+        <h3 class="text-center mb-4">ORDER SUMMARY</h3>
+        <hr>
+        {% for c in ca %}
+        <!-- Items List -->
+        <div class="d-flex justify-content-between">
+            <p>{{ c.product.short_d }}</p>
+            <div class="d-flex">
+                <p class="me-5">Item: {{ c.quantity }}</p>
+                <p>INR &#8377 <strong>{{ c.price_and_quantity_total }}</strong></p>
+            </div>
+        </div>
+        {% endfor %}
+        <hr>
+
+        <!-- Subtotal -->
+        <div class="d-flex justify-content-between">
+            <p class="fw-semibold">Subtotal</p>
+            <p class="fw-semibold">INR &#8377 <strong>{{ total }}</strong></p>
+        </div>
+
+        <!-- Additional Fees -->
+        <div class="d-flex justify-content-between">
+            <p>Platform Fee</p>
+            <p style="color:green;"><s>&#8377 49</s> Free</p>
+        </div>
+        <div class="d-flex justify-content-between">
+            <p>Shipping Fee</p>
+            <p>&#8377 149</p>
+        </div>
+
+        <!-- Total -->
+        <div class="d-flex justify-content-between">
+            <h5>Total</h5>
+            <h5>INR &#8377 <strong>{{ final_price }}</strong></h5>
+        </div>
+
+       
+       
+    </div> 
+</div>
+
+<div class="container mt-5">
+    <div class="row justify-content-center g-4">
+        
+
+        <form action="{% url 'payment' %}" method="POST">
+            {% csrf_token %}
+            <!-- Address Cards -->
+            {% for add in address %}
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <div class="card-header text-center" style='background-image: linear-gradient(-225deg, #FFFEFF 0%, #D7FFFE 100%); color:black;'>
+                        <h4>USER ADDRESS</h4>
+                    </div>
+                    
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <p class="mb-0">
+                                <input type="radio" name="selected_address" value="{{ add.id }}" checked>
+                                <strong>Name: {{ add.name }}</strong> 
+                                <p>
+                                    <p><strong>Address: </strong>{{ add.address }}</p>
+                                    <p><strong>City: </strong>{{ add.city }}</p>
+                                    <p><strong>State: </strong>{{ add.state }}</p>
+                                    <p><strong>Postal Code: </strong>{{ add.pincode }}</p>
+                                </div>
+                             
+                                
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <input type="submit" class="btn btn-outline-dark w-100" style='height:60px;font-weight: bolder; ' value="Proceed to Payment" >
+                        <br><br><br><br><br><br>
+                    </form> 
+        
+
+     <!--
+    <div class="d-grid mt-3">
+        <a href="{% url 'payment' %}" class="btn btn-outline-dark btn-lg" style="font-weight: bolder;">
+            Proceed to Checkout <i class="bi bi-bag-fill"></i>
+        </a>      
+    </div>
+</div>
+<br>
+<br>
+-->  
+{% endblock content %}

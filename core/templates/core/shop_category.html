@@ -1,0 +1,218 @@
+{% load static %}
+<style>
+
+
+    /*ressponsive*/
+
+    /* For Large Screens (Desktops) */
+    @media (max-width: 1200px) {
+        body {
+            font-size: 18px; 
+            padding: 15px;
+        }
+    }
+    
+    /* For Tablets (Portrait and Landscape) */
+    @media (max-width: 768px) {
+        body {
+            font-size: 16px;
+            padding: 10px;
+        }
+    
+        #logo {
+            font-size: 24px;
+            text-align: center;
+        }
+    
+        #navbarbtns {
+            display: block; /* Stack buttons vertically */
+            text-align: center;
+            margin-top: 10px;
+        }
+    
+        #smallcard {
+            width: 100%;
+            height: auto;
+            margin-right: 0;
+        }
+    }
+    
+    /* For Mobile Devices (Small Screens) */
+    @media (max-width: 576px) {
+        body {
+            font-size: 14px;
+            padding: 5px;
+        }
+    
+        #logo {
+            font-size: 20px;
+        }
+    
+        #navbarbtns {
+            font-size: 16px;
+        }
+    
+        #arrow-icon, #arrowi, #arrowii {
+            margin-left: 0; 
+            display: block;
+            text-align: center;
+        }
+    
+        #img, #img2 {
+            width: 100%;
+            height: auto;
+        }
+    
+        #all, #shirts, #ttshirts, #tro {
+            margin: 5px 0;
+            width: 100%; /* Make buttons full width on mobile */
+            text-align: center;
+        }
+    
+        #sbc {
+            margin-left: 0;
+            text-align: center;
+        }
+    }
+    
+    /* Responsive for Tablets */
+    @media (max-width: 768px) {
+        .icon-container {
+            margin-left: 50px;
+            margin-right: 50px;
+            justify-content: center; /* Center-align on smaller screens */
+            gap: 10px;
+        }
+    
+        .icon-item h3 {
+            font-size: 13px; /* Slightly smaller text */
+        }
+    }
+    
+    /* Responsive for Mobile Devices */
+    @media (max-width: 576px) {
+        .icon-container {
+            margin-left: 10px;
+            margin-right: 10px;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center;
+            gap: 15px; /* Space between items */
+        }
+    
+        .icon-item {
+            width: 100%; /* Full width on mobile */
+        }
+    
+        .icon-item img {
+            width: 40px; /* Slightly smaller icons */
+            height: 40px;
+        }
+    
+        .icon-item h3 {
+            font-size: 12px;
+        }
+    }
+    body {
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    
+
+    #sbc{
+        color: black;
+        font-weight: 550;
+        margin-left: 650px;
+        justify-content: center;
+        align-items: center;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+    }
+    
+    
+    #shortsleeves{
+        text-decoration: none;
+        color: black;
+        justify-content: center;
+        margin-left: 79px;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+    }
+    
+    #tshirts{
+        text-decoration: none;
+        color: black;
+        justify-content: center;
+        margin-left: 105px;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    
+    #cargo{
+        text-decoration: none;
+        color: black;
+        justify-content: center;
+        margin-left: 73px;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+    }
+    
+    #shorts{
+        text-decoration: none;
+        color: black;
+        justify-content: center;
+        margin-left: 115px;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+    }
+
+</style>
+<h3 id="sbc">Shop By Category</h3>
+<br>
+<div class="container"> 
+  <div class="row justify-content-start"> 
+      <div class="col-md-3 mb-4" style="padding-left: 5px;"> 
+          <div class="card">
+              <a href="{% url "shirt" %}">
+                  <img src="{% static "core/images/1.webp" %}" alt="" class="card-img-top" height="480px" id="crd">
+              </a>
+              <div class="card-body">
+                  <a href="" id="shortsleeves">SHORT SLEEVES</a>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+          <div class="card">
+              <a href="#">
+                  <img src="{% static "core/images/2.webp" %}" alt="" class="card-img-top" height="480px">
+              </a>
+              <div class="card-body">
+                <a href="" id="tshirts">T-SHIRTS</a>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+          <div class="card">
+              <a href="#">
+                  <img src="{% static "core/images/3.webp" %}" alt="" class="card-img-top" height="480px">
+              </a>
+              <div class="card-body">
+                <a href="" id="cargo">CARGO TROUSERS</a>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-3 mb-4" style="padding-right: 5px;"> 
+          <div class="card">
+              <a href="#">
+                  <img src="{% static "core/images/4.webp" %}" alt="" class="card-img-top" height="480px" id="crrd">
+              </a>
+              <div class="card-body">
+                <a href="" id="shorts">SHORTS</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<br>
+<br>

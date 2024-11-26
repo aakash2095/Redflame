@@ -1,0 +1,188 @@
+
+{% load static %}
+<style>
+  
+/*ressponsive*/
+
+/* For Large Screens (Desktops) */
+@media (max-width: 1200px) {
+    body {
+        font-size: 18px; 
+        padding: 15px;
+    }
+}
+
+/* For Tablets (Portrait and Landscape) */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    #logo {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    #navbarbtns {
+        display: block; /* Stack buttons vertically */
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    #smallcard {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+    }
+}
+
+/* For Mobile Devices (Small Screens) */
+@media (max-width: 576px) {
+    body {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    #logo {
+        font-size: 20px;
+    }
+
+    #navbarbtns {
+        font-size: 16px;
+    }
+
+    #arrow-icon, #arrowi, #arrowii {
+        margin-left: 0; 
+        display: block;
+        text-align: center;
+    }
+
+    #img, #img2 {
+        width: 100%;
+        height: auto;
+    }
+
+    #all, #shirts, #ttshirts, #tro {
+        margin: 5px 0;
+        width: 100%; /* Make buttons full width on mobile */
+        text-align: center;
+    }
+
+    #sbc {
+        margin-left: 0;
+        text-align: center;
+    }
+}
+
+/* Responsive for Tablets */
+@media (max-width: 768px) {
+    .icon-container {
+        margin-left: 50px;
+        margin-right: 50px;
+        justify-content: center; /* Center-align on smaller screens */
+        gap: 10px;
+    }
+
+    .icon-item h3 {
+        font-size: 13px; /* Slightly smaller text */
+    }
+}
+
+/* Responsive for Mobile Devices */
+@media (max-width: 576px) {
+    .icon-container {
+        margin-left: 10px;
+        margin-right: 10px;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center;
+        gap: 15px; /* Space between items */
+    }
+
+    .icon-item {
+        width: 100%; /* Full width on mobile */
+    }
+
+    .icon-item img {
+        width: 40px; /* Slightly smaller icons */
+        height: 40px;
+    }
+
+    .icon-item h3 {
+        font-size: 12px;
+    }
+}
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+</style>
+<marquee  class="marque" style="background-color:black; ">
+    <h5><pre style="background-color:black; color:white;" class="mt-2"><spam style='color:red; font-weight: bold;'>&#x1F389; Welcome!!! {{request.user}} &#x1F389;</spam>                 GET FLAT 10% OFF ON ORDER ABOVE &#8377 1599              FLAT 15% OFF ON 1ST PURCHASE *TnC Apply</pre></h5>
+</marquee>
+
+
+<!--navbar--> 
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url "index" %}" id="logo" style="font-family: cursive;"><strong>RED FLAME</strong></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url "newarrival" %}" id="navbarbtns" style="font-family: cursive;">New Arrivals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "trending" %}" id="navbarbtns" style="font-family: cursive;">Trending Now</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navbarbtns" style="font-family: cursive;">
+              Shop by Category
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url "shirt" %}" style="font-family: cursive;">Shirts</a></li>
+              <li><a class="dropdown-item" href="{% url "Tshirt" %}" style="font-family: cursive;">T-Shirts</a></li>
+              <li><a class="dropdown-item" href="#" style="font-family: cursive;">Trousers</a></li>
+              <li><a class="dropdown-item" href="#" style="font-family: cursive;">Shorts</a></li>
+              <li><a class="dropdown-item" href="#" style="font-family: cursive;">Sweatshirts</a></li>
+            </ul>
+          </li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navbarbtns" style="font-family: cursive;">
+              Account
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url "register" %}" style="font-family: cursive;">Register</a></li>
+              <li><a class="dropdown-item" href="{% url "profile" %}" style="font-family: cursive;">Profile</a></li>
+              <li><a class="dropdown-item" href="{% url "order" %}" style="font-family: cursive;">Orders</a></li>
+              <li><a class="dropdown-item" href="help.html" style="font-family: cursive;">Help</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}" style="font-family: cursive;">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+
+       <!--<a href="{% url 'logout' %}">Logout</a>--> 
+               
+        <form class="d-flex ms-auto" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchbar">
+          <button class="btn" type="submit" id="searchbtn"><i class="bi bi-search"></i></button>
+        </form>
+
+        <ul class="navbar-nav ms-3">
+          <li class="nav-item" id="navbarbtns">
+            <a class="nav-link" href="{% url "showcart" %}">
+              <i class="bi bi-cart" style="font-size: 1.2rem; margin-right: 8px; color: black;" id="navbarbtns"></i>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>

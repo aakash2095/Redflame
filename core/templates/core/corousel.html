@@ -1,0 +1,144 @@
+{% load static %}
+<style>
+
+  
+/*ressponsive*/
+
+/* For Large Screens (Desktops) */
+@media (max-width: 1200px) {
+    body {
+        font-size: 18px; 
+        padding: 15px;
+    }
+}
+
+/* For Tablets (Portrait and Landscape) */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    #logo {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    #navbarbtns {
+        display: block; /* Stack buttons vertically */
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    #smallcard {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+    }
+}
+
+/* For Mobile Devices (Small Screens) */
+@media (max-width: 576px) {
+    body {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    #logo {
+        font-size: 20px;
+    }
+
+    #navbarbtns {
+        font-size: 16px;
+    }
+
+    #arrow-icon, #arrowi, #arrowii {
+        margin-left: 0; 
+        display: block;
+        text-align: center;
+    }
+
+    #img, #img2 {
+        width: 100%;
+        height: auto;
+    }
+
+    #all, #shirts, #ttshirts, #tro {
+        margin: 5px 0;
+        width: 100%; /* Make buttons full width on mobile */
+        text-align: center;
+    }
+
+    #sbc {
+        margin-left: 0;
+        text-align: center;
+    }
+}
+
+/* Responsive for Tablets */
+@media (max-width: 768px) {
+    .icon-container {
+        margin-left: 50px;
+        margin-right: 50px;
+        justify-content: center; /* Center-align on smaller screens */
+        gap: 10px;
+    }
+
+    .icon-item h3 {
+        font-size: 13px; /* Slightly smaller text */
+    }
+}
+
+/* Responsive for Mobile Devices */
+@media (max-width: 576px) {
+    .icon-container {
+        margin-left: 10px;
+        margin-right: 10px;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center;
+        gap: 15px; /* Space between items */
+    }
+
+    .icon-item {
+        width: 100%; /* Full width on mobile */
+    }
+
+    .icon-item img {
+        width: 40px; /* Slightly smaller icons */
+        height: 40px;
+    }
+
+    .icon-item h3 {
+        font-size: 12px;
+    }
+}
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+</style>
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" >
+        <img src="https://www.westside.com/cdn/shop/files/C2_01_1920X900_VIEW_ALL.jpg?v=1731658130" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.westside.com/cdn/shop/files/C2_04_1920X900_SHOP_BOTTOMS.jpg?v=1731658385" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.westside.com/cdn/shop/files/C2_02_1920X900_WINTERWEAR_50959fb0-1e41-4030-b617-3b7dbb5a2393.jpg?v=1731665706" class="d-block w-100" alt="...">
+      </div>
+     
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
