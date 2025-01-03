@@ -74,7 +74,7 @@ def log_in(request):
 
 def log_out(request):
     logout(request)
-    return redirect('register')
+    return redirect('index')
 
 
 
