@@ -165,10 +165,12 @@ def add_to_cart(request, id):
             messages.error(request, 'This item is already in your cart!')
         else:
             CartUpperwear(user=user, product=na).save()
-            messages.success(request, 'Item added to cart successfully!')       
+            messages.success(request, 'Item added to cart successfully!')   
+
         return redirect('bigcard', id)  
     else:
         return redirect('login')  
+    
 
 
 
