@@ -38,14 +38,14 @@ def register(request):
                 messages.success(request, 'Registration Successful')
                 email = request.POST['email']
                 user = User.objects.filter(email=email).first()
-                if user:
-                   send_mail(
-                    'Registration Successful',
-                    'Dear User,\n\nThank you for registering with us! We are excited to have you on board and look forward to providing you with the best experience. If you have any questions or need assistance, feel free to reach out to us.\n\nBest regards,\n[Red Flame & Team]',
-                    'redflamepremium@gmail.com',  # Use a verified email address
-                    [email],
-                    fail_silently=False,
-)
+                # if user:
+                #    send_mail(
+                #     'Registration Successful',
+                #     'Dear User,\n\nThank you for registering with us! We are excited to have you on board and look forward to providing you with the best experience. If you have any questions or need assistance, feel free to reach out to us.\n\nBest regards,\n[Red Flame & Team]',
+                #     'redflamepremium@gmail.com',  # Use a verified email address
+                #     [email],
+                #     fail_silently=False,
+                #     )
                 return redirect('login')
         else:
             rf = Registerform()
@@ -54,7 +54,7 @@ def register(request):
         return redirect('profile')
 
 def log_in(request):
-    if not request.user.is_authenticated:
+    
         if request.method == 'POST':
             rf = Authenticateform(request, request.POST)
             if rf.is_valid():
@@ -69,8 +69,7 @@ def log_in(request):
         else:
             rf = Authenticateform()
         return render(request, 'core/login.html', {'rf': rf})
-    else:
-        return redirect('profile')
+  
 
 def log_out(request):
     logout(request)
@@ -303,13 +302,13 @@ def payment_success(request, selected_address_id):
             quantity=cart.quantity,
             cloth=cart.product).save()
         cart.delete() 
-    send_mail(
-                'Thank You for Your Order',
-                f'Hello ,\n\nThank you for placing your order with us! We appreciate your business and are processing your order. You will receive an update soon with the details of your shipment.\n\nIn the meantime, you can track your order on our website .\n\nIf you have any questions, feel free to contact us.\n\nBest regards,\nRed Flame & Team',
-                'redflamepremium@gmail.com',  # Use a verified email address
-                [request.user.email],
-                fail_silently=False,
-            )
+    # send_mail(
+    #             'Thank You for Your Order',
+    #             f'Hello ,\n\nThank you for placing your order with us! We appreciate your business and are processing your order. You will receive an update soon with the details of your shipment.\n\nIn the meantime, you can track your order on our website .\n\nIf you have any questions, feel free to contact us.\n\nBest regards,\nRed Flame & Team',
+    #             'redflamepremium@gmail.com',  # Use a verified email address
+    #             [request.user.email],
+    #             fail_silently=False,
+    #         )
 
     return render(request, 'core/payment_success.html')
 
