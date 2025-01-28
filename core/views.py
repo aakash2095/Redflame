@@ -379,7 +379,7 @@ def forgot_password(request):
             send_mail(
                 'Password Reset',
                 f'Click the following link to reset your password: {reset_url}',
-                'redflamepremium@gmail.com',  # Use a verified email address
+                settings.EMAIL_HOST_USER,  # Use a verified email address
                 [email],
                 fail_silently=False,
             )
