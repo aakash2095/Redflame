@@ -83,7 +83,6 @@
                                 </div>
                             </div>
                         {% endfor %}
-
                         {% if messages %}
                         {% for message in messages %}
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -93,11 +92,10 @@
                         {% endfor %}
                     {% endif %}
 
-
                         <div class="text-center d-flex justify-content-center mt-4 gap-2">
                             <div class="col">
-                                <a href="{% url 'showaddress' %}" class="btn btn-outline-dark w-100">
-                                    Show Address
+                                <a href="{% url 'index' %}" class="btn btn-outline-dark w-100">
+                                  </i> <strong>Back to home</strong>
                                 </a>
                             </div>
                             <div class="col">
@@ -106,7 +104,6 @@
                         </div>
                         
                     </form>
-    
                 </div>
             </div>
         </div>

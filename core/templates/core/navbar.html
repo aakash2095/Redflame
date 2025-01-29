@@ -158,20 +158,23 @@ body {
               Account
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="{% url "register" %}" style="font-family: cursive;">Register</a></li>
+              {% if request.user.is_authenticated %}
               <li><a class="dropdown-item" href="{% url "profile" %}" style="font-family: cursive;">Profile</a></li>
               <li><a class="dropdown-item" href="{% url "order" %}" style="font-family: cursive;">Orders</a></li>
-              <li><a class="dropdown-item" href="help.html" style="font-family: cursive;">Help</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="{% url 'logout' %}" style="font-family: cursive;">Logout</a></li>
+              {% else %}
+              <li><a class="dropdown-item" href="{% url "register" %}" style="font-family: cursive;">Register</a></li>
+              <li><a class="dropdown-item" href="{% url "login" %}" style="font-family: cursive;">Login</a></li>
+              {% endif %}
             </ul>
           </li>
         </ul>
 
        <!--<a href="{% url 'logout' %}">Logout</a>--> 
                
-        <form class="d-flex ms-auto" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchbar">
+        <form class="d-flex ms-auto" role="search" action='{% url "product_search" %}'>
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchbar" name="q" value="{{ query }}">
           <button class="btn" type="submit" id="searchbtn"><i class="bi bi-search"></i></button>
         </form>
 

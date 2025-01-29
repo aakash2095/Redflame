@@ -75,9 +75,9 @@
 
                         {% csrf_token %}
                         {% for r in rf %}
-                         {{r.label_tag}}  <br> {{r}}  <br> {{r.errors|striptags}}
+                         {{r.label_tag}}  {{r.errors|striptags}}  <br> {{r}}
                          {% endfor %}
-                        
+                        <br>
                         <div class="text-center">
                             <input type="submit" value="submit" class="btn btn-outline-dark register-button me-2 w-100">   
                     </div>

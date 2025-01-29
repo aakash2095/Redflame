@@ -41,13 +41,15 @@
             <h5>Total</h5>
             <h5>INR &#8377 <strong>{{ final_price }}</strong></h5>
         </div>
-
-       
-       
     </div> 
 </div>
 
+
 <div class="container mt-5">
+    <div>
+        <a href={% url "payment_address" %} style='text-decoration:none; color:white '> <button class='btn btn-secondary' {% url "payment_address" %}> Please Add Address <i class="bi bi-plus-lg"></i></button></a>
+     </div>
+     <br>
     <div class="row justify-content-center g-4">
         
 
@@ -71,11 +73,15 @@
                                     <p><strong>State: </strong>{{ add.state }}</p>
                                     <p><strong>Postal Code: </strong>{{ add.pincode }}</p>
                                 </div>
-                             
+                                
                                 
                             </div>
                         </div>
                         {% endfor %}
+
+                        
+                       
+                        <hr>
                         <input type="submit" class="btn btn-outline-dark w-100" style='height:60px;font-weight: bolder; ' value="Proceed to Payment" >
                         <br><br><br><br><br><br>
                     </form> 

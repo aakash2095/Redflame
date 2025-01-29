@@ -21,6 +21,7 @@ urlpatterns = [
     path('delete_cart/<int:id>/',views.delete_cart,name='delete_cart'),
     path('add_item/<int:id>/',views.add_item,name='add_item'),
     path('delete_item/<int:id>/',views.delete_item,name='delete_item'),
+    path('payment_address/',views.payment_address,name='payment_address'),
     path('address/',views.address,name='address'),
     path('delete_address/<int:id>',views.delete_address,name='deleteaddress'),
     path('showaddress/',views.showaddress,name='showaddress'),
@@ -35,6 +36,7 @@ urlpatterns = [
     path('forgotpassword/',views.forgot_password, name="forgotpassword"),
     path('reset_password/<uidb64>/<token>/', views.reset_password, name='resetpassword'),
     path('password_reset_done/', views.password_reset_done, name='passwordresetdone'),
+    path('product_search', views.product_search, name='product_search')
     
     
     

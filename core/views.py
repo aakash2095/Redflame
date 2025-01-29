@@ -29,29 +29,23 @@ def index(request):
 
 ####################  REGISTER AND LOGIN #########################
 
+
 def register(request):
-    if not request.user.is_authenticated:
         if request.method == "POST":
             rf = Registerform(request.POST)
-            if rf.is_valid():
+            email = request.POST.get('email') 
+            if User.objects.filter(email=email).exists():
+                messages.error(request, 'This email is already linked to an account!!')
+            elif rf.is_valid():
                 rf.save()
                 messages.success(request, 'Registration Successful')
-                email = request.POST['email']
-                user = User.objects.filter(email=email).first()
-                # if user:
-                #    send_mail(
-                #     'Registration Successful',
-                #     'Dear User,\n\nThank you for registering with us! We are excited to have you on board and look forward to providing you with the best experience. If you have any questions or need assistance, feel free to reach out to us.\n\nBest regards,\n[Red Flame & Team]',
-                #     'redflamepremium@gmail.com',  # Use a verified email address
-                #     [email],
-                #     fail_silently=False,
-                #     )
                 return redirect('login')
         else:
-            rf = Registerform()
-        return render(request, 'core/register.html', {'rf': rf})
-    else:
-        return redirect('profile')
+            rf = Registerform()     
+        return render(request, 'core/register.html', {'rf': rf})   
+
+
+    
 
 def log_in(request):
     
@@ -207,6 +201,10 @@ def delete_item(request,id):
         if product.quantity>1:
             product.quantity -=1
             product.save()
+        else:
+            product.quantity == 0
+            
+            product.delete()
         return redirect('showcart')
     else:
         return redirect ('login')
@@ -224,11 +222,35 @@ def address(request):
             state= rf.cleaned_data['state']
             pincode= rf.cleaned_data['pincode']
             Userdetails(user=user,name=name,address=address,city=city,state=state,pincode=pincode).save()
-            return redirect('showaddress')
+            messages.success(request,'Address added succesfully!!')
+        else:
+            messages.error(request, "Please fill out all required fields")
+            return redirect('address')
     else:
         rf =Userform()
         address = Userdetails.objects.filter(user=request.user)
     return render(request,'core/address.html',{'rf':rf,'address':address})
+
+def payment_address(request):     #Payment Address
+    if request.method == 'POST':
+        rf=Userform(request.POST)
+        if rf.is_valid():
+            user=request.user
+            name= rf.cleaned_data['name']
+            address= rf.cleaned_data['address']
+            city= rf.cleaned_data['city']
+            state= rf.cleaned_data['state']
+            pincode= rf.cleaned_data['pincode']
+            Userdetails(user=user,name=name,address=address,city=city,state=state,pincode=pincode).save()
+            messages.success(request, 'Address Succesfully Added!!') 
+            return redirect('payment_address')
+    else:
+        rf =Userform()
+        address = Userdetails.objects.filter(user=request.user)
+    return render(request,'core/payment_address.html',{'rf':rf,'address':address})
+
+
+
 
 
 def delete_address(request,id):
@@ -412,3 +434,35 @@ def reset_password(request, uidb64, token):
 
 def password_reset_done(request):
     return render(request, 'core/password_reset_done.html')
+
+
+
+#================= search =================
+
+
+def product_search(request):
+    query = request.GET.get('q') 
+    print(query)
+    if query:  
+        print('inside if')
+        products = new_arrival.objects.filter(name__icontains=query) | new_arrival.objects.filter(short_d__icontains=query)
+    else:
+        print('inside else')
+        products = new_arrival.objects.all()
+
+    context = {
+        'products': products,  
+        'query': query,
+    }
+    print(context)
+    return render(request, 'core/product_search.html', context)
+
+
+
+
+
+
+
+
+    
+
