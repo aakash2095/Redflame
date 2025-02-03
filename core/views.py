@@ -4,14 +4,12 @@ from django.contrib.auth import authenticate, login, logout , update_session_aut
 from django.contrib import messages
 from . models import new_arrival,CartUpperwear,Userdetails,Order
 
-
 #============================= Paypal ===============================
 
 from paypal.standard.forms import PayPalPaymentsForm
 from django.conf import settings
 import uuid
 from django.urls import reverse
-
 
 #================ Forgot Password ======================
 from django.contrib.auth.tokens import default_token_generator
@@ -48,7 +46,6 @@ def register(request):
     
 
 def log_in(request):
-    
         if request.method == 'POST':
             rf = Authenticateform(request, request.POST)
             if rf.is_valid():
@@ -405,6 +402,7 @@ def forgot_password(request):
                 [email],
                 fail_silently=False,
             )
+            
             return redirect('passwordresetdone')
         else:
             messages.success(request,'please enter valid email address')
