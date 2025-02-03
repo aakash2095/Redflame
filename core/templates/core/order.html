@@ -6,7 +6,7 @@
 <style>
 
 </style>
-{% if o %}
+{% if ord %}
 <section class="h-100 gradient-custom">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -129,10 +129,11 @@
                         </div>
                         {% endfor %}
                         <hr>
+                        {% else %}
+                        <h2 class='d-flex justify-content-center mt-5'>You Haven't Placed An Order&#128532</h2>
                         {% endif %}
                         
-                        <br>
-                        <br> <br> <br> <br> <br> <br>
+                        <br> <br> <br>
                       
                      
                     </div>
