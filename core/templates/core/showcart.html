@@ -24,41 +24,49 @@
       <div class="card rounded-3 mb-4">
         <div class="card-body p-4">
           <div class="row d-flex justify-content-between align-items-center">
+            
+            <!-- Product Image -->
             <div class="col-md-2 col-lg-2 col-xl-2">
-              <img src="{{c.product.upperwear_img.url}}" class="img-fluid rounded-3" alt="Cotton T-shirt">
+              <img src="{{ c.product.upperwear_img.url }}" class="img-fluid rounded-3" alt="Cotton T-shirt">
             </div>
-        <div class="col-md-3 col-lg-3 col-xl-3">
-          <p class="lead fw-normal mb-2" >{{c.product.short_d}}</p>
-          
-        </div>
-        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-          <a href="" class="btn-link-wrapper">
-            <button class="btn btn-link px-2">
-              <a href="{% url "delete_item" c.id %}" class="">
+      
+            <!-- Product Description -->
+            <div class="col-md-3 col-lg-3 col-xl-3">
+              <p class="lead fw-normal mb-2">{{ c.product.short_d }}</p>
+              <p class="text-muted">Size: <strong>{{ c.size }}</strong></p> <!-- Displaying selected size -->
+            </div>
+      
+            <!-- Quantity Controls -->
+            <div class="col-md-3 col-lg-3 col-xl-2 d-flex align-items-center">
+              <a href="{% url 'delete_item' c.id %}" class="btn btn-link px-2">
                 <i class="bi bi-dash-lg"></i>
               </a>
-            </button>
-        </a>
-        
-        <input id="form1" min="0" name="quantity" value="{{c.quantity}}" readonly  class="form-control form-control-sm" style="width: 30px; background-color:white;" />
-        
-        <a href="" class="btn-link-wrapper">
-            <button class="btn btn-link px-2">
-              <a href="{% url "add_item" c.id %}" class="">
+      
+              <input id="form1" min="0" name="quantity" value="{{ c.quantity }}" readonly  
+                     class="form-control form-control-sm text-center mx-2"
+                     style="width: 40px; background-color:white;" />
+      
+              <a href="{% url 'add_item' c.id %}" class="btn btn-link px-2">
                 <i class="bi bi-plus-lg"></i>
               </a>
-            </button>
-        </a>
-        
-      </div>
-      <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-        <h5 class="mb-0">INR &#8377 {{c.price_and_quantity_total}}</h5>
-      </div>
-      <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-        <a href="{% url "delete_cart" c.id %}" class="text-danger"><i class="bi bi-trash3-fill"></i></a>
+            </div>
+      
+            <!-- Price -->
+            <div class="col-md-3 col-lg-2 col-xl-2">
+              <h5 class="mb-0">INR &#8377; {{ c.price_and_quantity_total }}</h5>
+            </div>
+      
+            <!-- Remove Item -->
+            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+              <a href="{% url 'delete_cart' c.id %}" class="text-danger">
+                <i class="bi bi-trash3-fill"></i>
+              </a>
+            </div>
+      
+          </div>
         </div>
-      </div>
-    </div>
+      
+      
     {% if messages %}
     <div class="alert alert-danger" style="display: inline-block; padding: px; border: 1px solid #f5c6cb; border-radius: 5px; background-color: #f8d7da; color: #721c24; margin: 5px 0;">
         {% for message in messages %}
@@ -69,10 +77,15 @@
   </div>
   
   {% endfor %}
+  {% if ca %}
   <div class="d-grid mt-3">
     <a href="{% url "checkout" %}" class="btn btn-outline-dark btn-lg" style="font-weight: bolder;">
       Proceed to Checkout <i class="bi bi-bag-fill"></i></a>      
   </div>
+</div>
+  {% else %}
+  <h1 class="d-flex justify-content-center mt-4" style='color:red'>Your cart is empty!!</h1>
+  {% endif %}
   </div>
   </div>
 </section>

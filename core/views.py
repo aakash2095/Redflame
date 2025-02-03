@@ -4,14 +4,12 @@ from django.contrib.auth import authenticate, login, logout , update_session_aut
 from django.contrib import messages
 from . models import new_arrival,CartUpperwear,Userdetails,Order
 
-
 #============================= Paypal ===============================
 
 from paypal.standard.forms import PayPalPaymentsForm
 from django.conf import settings
 import uuid
 from django.urls import reverse
-
 
 #================ Forgot Password ======================
 from django.contrib.auth.tokens import default_token_generator
@@ -48,7 +46,6 @@ def register(request):
     
 
 def log_in(request):
-    
         if request.method == 'POST':
             rf = Authenticateform(request, request.POST)
             if rf.is_valid():
@@ -150,20 +147,33 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from .models import CartUpperwear, new_arrival
 
-def add_to_cart(request, id):
-    if request.user.is_authenticated: 
-        na = new_arrival.objects.get(pk=id)
-        user = request.user
-        if CartUpperwear.objects.filter(user=user, product=na).exists():
-            messages.error(request, 'This item is already in your cart!')
-        else:
-            CartUpperwear(user=user, product=na).save()
-            messages.success(request, 'Item added to cart successfully!')   
 
-        return redirect('bigcard', id)  
-    else:
-        return redirect('login')  
     
+
+def add_to_cart(request, id):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    na = new_arrival.objects.get(pk=id)
+
+    if request.method == "POST":
+        user = request.user
+        selected_size = request.POST.get('size', None)
+
+        if not selected_size:
+            messages.error(request, 'Please select a size before adding to the cart.')
+            return redirect('bigcard', id)
+
+        if CartUpperwear.objects.filter(user=user, product=na, size=selected_size).exists():
+            messages.error(request, 'This item with the selected size is already in your cart!')
+        else:
+            CartUpperwear.objects.create(user=user, product=na, size=selected_size)
+            messages.success(request, 'Item added to cart successfully!')
+
+        return redirect('bigcard', id)
+
+    return render(request, 'bigcard.html', {'product': na})
+
 
 
 
@@ -322,7 +332,7 @@ def payment_success(request, selected_address_id):
             user=user,
             customer=address_data,
             quantity=cart.quantity,
-            cloth=cart.product).save()
+            cloth=cart.product,order_size=new_arrival.size).save()
         cart.delete() 
     # send_mail(
     #             'Thank You for Your Order',
@@ -405,6 +415,7 @@ def forgot_password(request):
                 [email],
                 fail_silently=False,
             )
+            
             return redirect('passwordresetdone')
         else:
             messages.success(request,'please enter valid email address')
@@ -462,7 +473,7 @@ def product_search(request):
 
 
 
-
+print(new_arrival.size)
 
     
 

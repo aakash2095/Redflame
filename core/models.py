@@ -93,6 +93,7 @@ class CartUpperwear(models.Model):
      user = models.ForeignKey(User, on_delete=models.CASCADE)
      product=models.ForeignKey(new_arrival, on_delete=models.CASCADE)
      quantity=models.PositiveIntegerField(default=1)
+     size = models.CharField(default="S", max_length=50)
 
 
 
@@ -119,6 +120,7 @@ class Order(models.Model):
         quantity = models.PositiveIntegerField(default=1)
         order_at = models.DateTimeField(auto_now_add=True)
         status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='PENDING')
+        order_size = models.CharField(max_length=3,default='M')
 
         def __str__(self):
              return str(self.id)

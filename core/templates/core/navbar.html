@@ -121,7 +121,7 @@ body {
 
 </style>
 <marquee  class="marque" style="background-color:black; ">
-    <h5><pre style="background-color:black; color:white;" class="mt-2"><spam style='color:red; font-weight: bold;'>&#x1F389; Welcome!!! {{request.user}} &#x1F389;</spam>                 GET FLAT 10% OFF ON ORDER ABOVE &#8377 1599              FLAT 15% OFF ON 1ST PURCHASE *TnC Apply</pre></h5>
+    <h5><pre style="background-color:black; color:white;" class="mt-2"><spam style='color:red; font-weight: bold;'> {% if request.user.is_authenticated %} Welcome {{request.user}}!!{% else %}<strong>Please Login!!</strong>{% endif %} </spam>                 GET FLAT 10% OFF ON ORDER ABOVE &#8377 1599              FLAT 15% OFF ON 1ST PURCHASE *TnC Apply</pre></h5>
 </marquee>
 
 

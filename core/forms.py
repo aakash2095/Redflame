@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm,PasswordChangeForm,UserChangeForm
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 from . models import Userdetails
 
 class Registerform(UserCreationForm):
@@ -15,6 +16,18 @@ class Registerform(UserCreationForm):
                 'first_name':forms.TextInput(attrs={'class':'form-control'}),
                 'last_name':forms.TextInput(attrs={'class':'form-control'}),
                 'email':forms.TextInput(attrs={'class':'form-control'}),}
+        
+    def clean_first_name(self):
+        first_name = self.cleaned_data.get('first_name')
+        if first_name[0].isdigit():
+            raise ValidationError("first_name cannot start with a number")
+        return first_name
+    
+    def clean_last_name(self):
+        last_name = self.cleaned_data.get('last_name')      
+        if last_name[0].isdigit():
+            raise ValidationError("Last name cannot start with a number")
+        return last_name
         
 
 class Authenticateform(AuthenticationForm):
