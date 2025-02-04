@@ -9,7 +9,7 @@
         <h3 class="text-center mb-4">ORDER SUMMARY</h3>
         <hr>
         {% for c in ca %}
-        <!-- Items List -->
+       
         <div class="d-flex justify-content-between">
             <p>{{ c.product.short_d }}</p>
             <div class="d-flex">
@@ -21,26 +21,26 @@
         {% endfor %}
         <hr>
 
-        <!-- Subtotal -->
+       
         <div class="d-flex justify-content-between">
             <p class="fw-semibold">Subtotal</p>
-            <p class="fw-semibold">INR &#8377 <strong>{{ total }}</strong></p>
+            <p class="fw-semibold">INR &#x24; <strong>{{ total }}</strong></p>
         </div>
 
-        <!-- Additional Fees -->
+       
         <div class="d-flex justify-content-between">
             <p>Platform Fee</p>
-            <p style="color:green;"><s>&#8377 49</s> Free</p>
+            <p style="color:green;"><s>&#x24; 49</s> Free</p>
         </div>
         <div class="d-flex justify-content-between">
             <p>Shipping Fee</p>
-            <p>&#8377 149</p>
+            <p>&#x24; 149</p>
         </div>
 
-        <!-- Total -->
+        
         <div class="d-flex justify-content-between">
             <h5>Total</h5>
-            <h5>INR &#8377 <strong>{{ final_price }}</strong></h5>
+            <h5>&#x24; <strong>{{ final_price }}</strong></h5>
         </div>
     </div> 
 </div>
@@ -56,7 +56,7 @@
 
         <form action="{% url 'payment' %}" method="POST">
             {% csrf_token %}
-            <!-- Address Cards -->
+            
             {% for add in address %}
             <div class="col-md-12">
                 <div class="card mb-4">

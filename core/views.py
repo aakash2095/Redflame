@@ -108,7 +108,7 @@ def changepassword(request):
 
         
 
-####################  FETCHING IMAGE THROUGH DATABASE AND REDIRECT TO DETAILS PAGE #########################
+####################  FETCHING IMAGE THROUGH DATABASE AND REDIRECT TO PAGE #########################
 
 def trending(request):
     rf=new_arrival.objects.filter(category='TRENDING')
@@ -135,20 +135,8 @@ def bigcard(request,id):
 
 
 
-
-
-
 ####################  ADD TO CART #########################
 
-
-
-
-from django.contrib import messages
-from django.shortcuts import redirect
-from .models import CartUpperwear, new_arrival
-
-
-    
 
 def add_to_cart(request, id):
     if not request.user.is_authenticated:
@@ -261,8 +249,6 @@ def payment_address(request):     #Payment Address
 
 
 
-
-
 def delete_address(request,id):
     if request.method == 'POST':
         rf = Userdetails.objects.get(pk=id)
@@ -317,7 +303,7 @@ def payment(request):
 
     paypal_payment = PayPalPaymentsForm(initial=paypal_checkout)
 
-        #=============== Paypal Code  End =====================
+        #=============== Paypal Code End =====================
 
     return render(request,'core/payment.html',{'paypal':paypal_payment})
 
@@ -381,10 +367,7 @@ def buynow_payment(request,id):
         'return_url': f"http://{host}{reverse('buynowpaymentsuccess', args=[selected_address_id,id])}",
         'cancel_url': f"http://{host}{reverse('paymentfailed')}",
     }
-
     paypal_payment = PayPalPaymentsForm(initial=paypal_checkout)
-
-    #========================================================================
     return render(request,'core/payment.html',{'final_price':final_price,'address':address,'na':na,'paypal':paypal_payment})
 
 def buynowpaymentsuccess(request,selected_address_id,id):
@@ -421,7 +404,7 @@ def forgot_password(request):
             messages.success(request,'please enter valid email address')
     return render(request, 'core/forgot_password.html')
                                          
-    # return render(request,'core/forgot_password.html',)
+   
 
 def reset_password(request, uidb64, token):
     if request.method == 'POST':
@@ -453,19 +436,14 @@ def password_reset_done(request):
 
 def product_search(request):
     query = request.GET.get('q') 
-    print(query)
     if query:  
-        print('inside if')
         products = new_arrival.objects.filter(name__icontains=query) | new_arrival.objects.filter(short_d__icontains=query)
     else:
-        print('inside else')
         products = new_arrival.objects.all()
-
     context = {
         'products': products,  
         'query': query,
     }
-    print(context)
     return render(request, 'core/product_search.html', context)
 
 
@@ -473,7 +451,7 @@ def product_search(request):
 
 
 
-print(new_arrival.size)
+
 
     
 

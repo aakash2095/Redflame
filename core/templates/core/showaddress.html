@@ -44,7 +44,7 @@
 </style>
 <body>
 
-    <!-- Navigation bar with Home icon -->
+    
     <nav class="navbar navbar-expand-lg bg-transparent position-absolute top-0 start-0">
         <div class="container-fluid">
             <a href="{% url 'index' %}" class="navbar-brand">
@@ -56,7 +56,7 @@
 
     <div class="container mt-5">
         <div class="row justify-content-center g-4">
-            <!-- Address Cards -->
+            
             {% for add in address %}
                 <div class="col-md-4">
                     <div class="card mb-4">
@@ -78,7 +78,7 @@
                 </div>
             {% endfor %}
             
-            <!-- Add New Address Card -->
+           
             <div class="col-md-4">
                 <div class="card mb-4 d-flex align-items-center justify-content-center" style="height: 93%; border: 2px dotted #ddd;">
                     <a href="{% url 'address' %}" class="text-decoration-none text-center">

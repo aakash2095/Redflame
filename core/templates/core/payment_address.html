@@ -57,7 +57,7 @@
 
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <!-- Form Column -->
+          
             <div class="col-md-8">
                 <div class="form-container" style="margin-top:70px;">
                     <form action="" method="POST" novalidate>
@@ -74,9 +74,9 @@
 
                         {% for r in rf %}
                             <div class="form-group mb-3 d-flex align-items-center">
-                                <!-- Label on the left side -->
+                                <!-- Label on the left-->
                                 <label class="col-md-4">{{ r.label }}</label>
-                                <!-- Input on the right side -->
+                                <!-- Input on the right -->
                                 <div class="col-md-8">
                                     {{ r }}
                                     <div class="text-danger">{{ r.errors|striptags }}</div>
